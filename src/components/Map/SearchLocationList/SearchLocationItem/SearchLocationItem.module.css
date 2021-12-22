@@ -1,0 +1,39 @@
+.searchitem{
+    padding: 0.5em;
+    padding-left: 1em;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #d3d3d3;
+    width: 100vw;
+    hieght: 100%;
+}
+
+.searchitem:hover{
+    background-color: #F3F3F3F3;
+}
+
+
+.info{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.icon{
+    font-size: 1.5em;
+    color: #4d4d4d;
+    margin: 0.2em;
+}
+
+.placename{
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0.2em;
+}
+
+.addressname{
+    font-size: 0.8em;
+    color: #4d4d4d;
+    margin: 0.2em;
+    padding-left: 0;
+}

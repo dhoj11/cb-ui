@@ -1,0 +1,57 @@
+import {action, observable, makeAutoObservable} from "mobx";
+import {tabsListUnstyledClasses} from "@mui/material";
+
+class Store {
+    constructor() {
+        makeAutoObservable(this);
+    }
+
+    @observable searchedLocation = null;
+    @observable onFocusInputBox = false;
+    @observable latitude = 33.450701;
+    @observable longitude = 126.570667;
+    @observable positions = [];
+    @observable map = null;
+    @observable snackbarOpen = false;
+    @observable snackBarMsg = null;
+
+
+    @action setSearchedLocation = (location) => {
+        this.searchedLocation = location;
+    }
+
+    @action setOnFocusInputBox = (value) => {
+        this.onFocusInputBox = value;
+    }
+
+    @action setLatLon = (lat, lon) => {
+        this.latitude = lat;
+        this.longitude = lon;
+    }
+
+    @action setLatitude = (value) => {
+        this.latitude = value;
+    }
+
+    @action setLongitude = (value) => {
+        this.longitude = value;
+    }
+
+    @action setPositions = (list) => {
+        this.positions = list;
+    }
+
+    @action setMap = (obj) => {
+        this.map = obj;
+    }
+
+    @action setSnackBarOpen = (value) => {
+        this.snackbarOpen = value;
+    }
+
+    @action setSnackBarMsg = (msg) => {
+        this.snackBarMsg = msg;
+    }
+}
+
+export default new Store();

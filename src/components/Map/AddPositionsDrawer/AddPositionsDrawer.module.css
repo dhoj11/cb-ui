@@ -1,0 +1,76 @@
+.drawer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.baricon{
+    margin : 0.5em;
+    font-size: 1.2em;
+    color: #d3d3d3;
+}
+
+.inputwrapper{
+    align-items: center;
+    width: 100%;
+    bottom : 1em;
+    padding : 0 1em;
+}
+
+.input{
+    border-bottom : 1px solid #d3d3d3;
+    height: 2em;
+    width: 100%;
+    font-size: 1em;
+    padding-left: 1em;
+}
+
+.addbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(225, 225, 225, 0.84);
+    height: 2.3em;
+    border-radius: 5px;
+    margin: 1em;
+}
+
+.addbtn:hover{
+    background-color: rgba(238, 238, 238, 0.84);
+    color: #212121;
+}
+
+.addicon{
+    font-size: 1.2em;
+    color: #FEFEFE;
+    font-weight: 800;
+}
+
+.text{
+    font-weight: 700;
+    color: #989898;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.name{
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #424242;
+}
+
+.count{
+    width: 3em;
+    height: 2em;
+    font-size: 1.3em;
+    font-weight: 700;
+    text-align: center;
+}
