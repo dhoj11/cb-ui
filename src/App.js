@@ -14,13 +14,20 @@ function App() {
             <Mobile>
               <SinglePage>
                 <Routes>
-                    <Route exact path="/" element={<Home />}/>
+                    {/*<Route exact path="/" element={<Home />}/>*/}
+                    <Route exact path="/" element={<Map />}/>
                     <Route path="/map" element={<Map />}/>
                 </Routes>
               </SinglePage>
             </Mobile>
             <Default>
-              PC 버전은 현재 준비중입니다.
+                <SinglePage>
+                    <Routes>
+                        {/*<Route exact path="/" element={<Home />}/>*/}
+                        <Route exact path="/" element={<Map />}/>
+                        <Route path="/map" element={<Map />}/>
+                    </Routes>
+                </SinglePage>
             </Default>
           </BrowserRouter>
       </>
