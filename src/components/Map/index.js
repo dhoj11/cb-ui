@@ -160,6 +160,7 @@ const Map = observer(() => {
                 <SearchInputBox/>
             </div>
                 <div id='map' className={style.map}/>
+
                 {
                     onFocusInputBox &&
                         <div className={style.searchlist}>
