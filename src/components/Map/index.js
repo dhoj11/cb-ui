@@ -45,7 +45,7 @@ const Map = observer(() => {
     useEffect( ()=>{
         fnInitMap();
         callAPIgetMapPositionsAll();
-        console.log("test_5");
+        console.log("test_6");
     },[])
 
 
