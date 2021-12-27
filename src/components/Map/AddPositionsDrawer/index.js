@@ -20,7 +20,9 @@ const AddPositionsDrawer = observer((props) => {
 
     const fnChangeChulbongCount = (event) => {
         if(!validation.isNumeric(event.target.value)){
-            setChulbongCount(0);
+            setSnackBarMsg("숫자만 입력할 수 있습니다.");
+            setSnackBarOpen(true);
+            setChulbongCount(0)
         }else{
             setChulbongCount(event.target.value)
         }
@@ -28,6 +30,8 @@ const AddPositionsDrawer = observer((props) => {
 
     const fnChangePyeongCount = (event) => {
         if(!validation.isNumeric(event.target.value)){
+            setSnackBarMsg("숫자만 입력할 수 있습니다.");
+            setSnackBarOpen(true);
             setPyeongCount(0);
         }else{
             setPyeongCount(event.target.value);
@@ -76,16 +80,18 @@ const AddPositionsDrawer = observer((props) => {
             <div className={style.info}>
                 <div className={style.chulbong}>
                     <span className={style.name}>철봉</span>
-                    <input type="number"
+                    <input type="text"
                            className={style.count}
                            onChange={fnChangeChulbongCount}
+                           value={chulbongCount}
                            placeholder="0"/>
                 </div>
                 <div className={style.pyeong}>
                     <span className={style.name}>평행봉</span>
-                    <input type="number"
+                    <input type="text"
                            className={style.count}
                            onChange={fnChangePyeongCount}
+                           value={pyeongCount}
                            placeholder="0"/>
                 </div>
             </div>
