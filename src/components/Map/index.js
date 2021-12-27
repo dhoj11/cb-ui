@@ -13,6 +13,7 @@ import point from "../../utils/img/point.png"
 import addflag from "../../utils/img/flag.png"
 import {faLocationArrow} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Menu from "./Menu";
 
 const Bar = React.forwardRef((props, ref) => (
     <span {...props} ref={ref}>
@@ -42,6 +43,7 @@ const Map = observer(() => {
     const [selectedPosition, setSelectedPosition] = useState();
     const [positionDialogOpen, setPositionDialogOpen] = useState(false);
     const [addPositionDrawerOpen, setAddPositionDrawerOpen] = useState(false);
+    const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
 
     const [selectLat, setSelectLat] = useState();
     const [selectLon, setSelectLon] = useState();
@@ -175,27 +177,35 @@ const Map = observer(() => {
         setSnackBarMsg("");
     }
 
+    const onOpenMenuDrawer = () => {
+        setMenuDrawerOpen(true);
+    }
+
+    const onCloseMenuDrawer = () => {
+        setMenuDrawerOpen(false);
+    }
+
     return (
         <div className={style.container}>
             <div className={style.searchwrapper}>
-                <SearchInputBox/>
+                <SearchInputBox
+                    onOpenMenuDrawer={onOpenMenuDrawer}
+                />
             </div>
-                <div id='map' className={style.map}>
-                    <div className={style.getlocation}
-                         onClick={fnGetLocation}>
-                        <div className={style.btn}>
-                            <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
-                        </div>
+            <div id='map' className={style.map}>
+                <div className={style.getlocation}
+                     onClick={fnGetLocation}>
+                    <div className={style.btn}>
+                        <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
                     </div>
                 </div>
-
-                {
-                    onFocusInputBox &&
-                        <div className={style.searchlist}>
-                            <SearchLocationList/>
-                        </div>
-                }
-
+            </div>
+            {
+                onFocusInputBox &&
+                    <div className={style.searchlist}>
+                        <SearchLocationList/>
+                    </div>
+            }
             <Modal
                 open={positionDialogOpen}
                 onClose={onClosePositionDialog}
@@ -226,6 +236,18 @@ const Map = observer(() => {
                     drawPositions={drawPositions}
                     onClosePositionDrawer={onClosePositionDrawer}
                     />
+            </SwipeableDrawer>
+
+            <SwipeableDrawer
+                PaperProps={{sx: { width: "95%",
+                        borderTopRightRadius: 10, },}}
+                style={{borderRadius: "20px"}}
+                anchor='left'
+                open={menuDrawerOpen}
+                onClose={() => onCloseMenuDrawer()}
+                onOpen={() => onOpenMenuDrawer()}
+            >
+                <Menu/>
             </SwipeableDrawer>
 
             <Snackbar
