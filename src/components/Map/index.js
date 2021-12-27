@@ -63,7 +63,7 @@ const Map = observer(() => {
             map.panTo(moveLatLng);
             map.setLevel(3);
         } else {
-            console.log("map obj error...")
+            console.log("map obj error...!")
         }
     }
 
