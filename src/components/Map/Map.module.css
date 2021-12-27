@@ -20,7 +20,7 @@
     flex-direction: row;
     width: 95%;
     height: 2.5em;
-    position: absolute;
+    position: fixed;
     z-index: 100;
     background-color: #FEFEFE;
     margin: 0.5em 0;

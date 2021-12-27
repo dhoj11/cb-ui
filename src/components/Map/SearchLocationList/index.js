@@ -19,7 +19,7 @@ const SearchLocationList = observer((props) => {
 
     useEffect(()=>{
         const ps = new kakao.maps.services.Places();
-        ps.keywordSearch(searchedLocation, placesSearchCB);
+        ps.keywordSearch(searchedLocation, placesSearchCB, {size: 8});
     },[searchedLocation])
 
     function placesSearchCB (data, status, pagination) {
