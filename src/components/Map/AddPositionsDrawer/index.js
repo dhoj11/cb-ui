@@ -43,7 +43,6 @@ const AddPositionsDrawer = observer((props) => {
         let CCount = chulbongCount;
         let PCount = pyeongCount;
 
-        console.log(chulbongCount);
 
         if(validation.checkEmpty(CCount)){
             CCount = 0;
@@ -80,14 +79,14 @@ const AddPositionsDrawer = observer((props) => {
                     <input type="number"
                            className={style.count}
                            onChange={fnChangeChulbongCount}
-                           placeholder="N"/>
+                           placeholder="0"/>
                 </div>
                 <div className={style.pyeong}>
                     <span className={style.name}>평행봉</span>
                     <input type="number"
                            className={style.count}
                            onChange={fnChangePyeongCount}
-                           placeholder="N"/>
+                           placeholder="0"/>
                 </div>
             </div>
             <div className={style.inputwrapper}>

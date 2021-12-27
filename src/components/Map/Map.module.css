@@ -17,7 +17,7 @@
 .searchwrapper{
     display: flex;
     flex-direction: row;
-    width: 90%;
+    width: 95%;
     height: 2.5em;
     position: absolute;
     z-index: 100;

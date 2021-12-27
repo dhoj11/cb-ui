@@ -4,6 +4,7 @@ import {observer} from "mobx-react";
 import store from "../store/Store";
 import SearchLocationItem from "./SearchLocationItem/";
 import zIndex from "@mui/material/styles/zIndex";
+import Empty from "./Empty";
 
 /*global kakao*/
 const SearchLocationList = observer((props) => {
@@ -40,7 +41,7 @@ const SearchLocationList = observer((props) => {
                             longitude={item.x}
                         />
                     )
-                    : <div>검색결과가 없습니다</div>
+                    : <Empty/>
             }
         </div>
     )

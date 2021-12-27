@@ -45,12 +45,13 @@ const Map = observer(() => {
     useEffect( ()=>{
         fnInitMap();
         callAPIgetMapPositionsAll();
-        console.log("test_6");
     },[])
 
 
     useEffect(()=>{
-        fnMovePositions();
+        if( !validation.checkEmpty(latitude) && !validation.checkEmpty(longitude) ){
+            fnMovePositions();
+        }
     },[latitude, longitude])
 
     useEffect(()=>{
@@ -63,7 +64,7 @@ const Map = observer(() => {
             map.panTo(moveLatLng);
             map.setLevel(3);
         } else {
-            console.log("map obj error...!")
+            //console.log("map obj error...")
         }
     }
 
@@ -121,7 +122,7 @@ const Map = observer(() => {
             kakao.maps.event.addListener(marker, 'click', function () {
                 setSelectedPosition(positions[i].positionId)
                 setPositionDialogOpen(true);
-            })
+            },  {passive: true})
         }
 
         if(!validation.checkEmpty(map)) {
