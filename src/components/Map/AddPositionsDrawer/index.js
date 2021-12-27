@@ -23,6 +23,9 @@ const AddPositionsDrawer = observer((props) => {
             setSnackBarMsg("숫자만 입력할 수 있습니다.");
             setSnackBarOpen(true);
             setChulbongCount(0)
+        }else if(event.target.value > 20){
+            setSnackBarMsg("입력수량을 확인해주세요.");
+            setSnackBarOpen(true);
         }else{
             setChulbongCount(event.target.value)
         }
@@ -33,6 +36,9 @@ const AddPositionsDrawer = observer((props) => {
             setSnackBarMsg("숫자만 입력할 수 있습니다.");
             setSnackBarOpen(true);
             setPyeongCount(0);
+        }else if(event.target.value > 20){
+            setSnackBarMsg("입력수량을 확인해주세요.");
+            setSnackBarOpen(true);
         }else{
             setPyeongCount(event.target.value);
         }
