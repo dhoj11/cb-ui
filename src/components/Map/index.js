@@ -11,6 +11,8 @@ import PositionDialog from "./PositionDialog";
 import AddPositionsDrawer from "./AddPositionsDrawer";
 import point from "../../utils/img/point.png"
 import addflag from "../../utils/img/flag.png"
+import {faLocationArrow} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Bar = React.forwardRef((props, ref) => (
     <span {...props} ref={ref}>
@@ -33,6 +35,8 @@ const Map = observer(() => {
         setSnackBarMsg,
         setMap,
         setPositions,
+        setLatitude,
+        setLongitude
     } = store
 
     const [selectedPosition, setSelectedPosition] = useState();
@@ -65,6 +69,23 @@ const Map = observer(() => {
             map.setLevel(3);
         } else {
             //console.log("map obj error...")
+        }
+    }
+
+    const fnGetLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+
+                setLatitude(lat);
+                setLongitude(lon);
+
+                fnMovePositions();
+            });
+        } else{
+            setSnackBarMsg("현재 위치정보를 가져올 수 없습니다.");
+            setSnackBarOpen(true);
         }
     }
 
@@ -159,7 +180,14 @@ const Map = observer(() => {
             <div className={style.searchwrapper}>
                 <SearchInputBox/>
             </div>
-                <div id='map' className={style.map}/>
+                <div id='map' className={style.map}>
+                    <div className={style.getlocation}
+                         onClick={fnGetLocation}>
+                        <div className={style.btn}>
+                            <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
+                        </div>
+                    </div>
+                </div>
 
                 {
                     onFocusInputBox &&
