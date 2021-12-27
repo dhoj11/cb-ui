@@ -40,7 +40,7 @@ const SearchLocationList = observer((props) => {
                             longitude={item.x}
                         />
                     )
-                    : <div>검색결과가 없습니다.</div>
+                    : <div>검색결과가 없습니다</div>
             }
         </div>
     )
