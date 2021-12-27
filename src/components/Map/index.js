@@ -105,11 +105,11 @@ const Map = observer(() => {
     이벤트 리스너를 등록합니다.
      */
     const drawPositions = () => {
-        const icon = new kakao.maps.MarkerImage(addflag, new kakao.maps.Size(31, 35));
+        const icon = new kakao.maps.MarkerImage(addflag, new kakao.maps.Size(25, 25));
         const marker = new kakao.maps.Marker({image: icon});
 
         for (let i = 0; i < positions.length; i++) {
-            const imageSize = new kakao.maps.Size(31, 31);
+            const imageSize = new kakao.maps.Size(25, 25);
             const markerImage = new kakao.maps.MarkerImage(point, imageSize);
 
             let marker = new kakao.maps.Marker({
