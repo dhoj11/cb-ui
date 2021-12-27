@@ -3,7 +3,6 @@ import style from "./SearchLocationList.module.css"
 import {observer} from "mobx-react";
 import store from "../store/Store";
 import SearchLocationItem from "./SearchLocationItem/";
-import zIndex from "@mui/material/styles/zIndex";
 import Empty from "./Empty";
 
 /*global kakao*/

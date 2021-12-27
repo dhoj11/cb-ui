@@ -6,7 +6,7 @@ import {observer} from "mobx-react";
 import store from "../store/Store"
 import validation from "../../../utils/validation";
 
-const SearchInputBox = observer(() => {
+const SearchInputBox = observer((props) => {
     const {
         onFocusInputBox,
         searchedLocation,
@@ -34,7 +34,7 @@ const SearchInputBox = observer(() => {
     }
 
     const onClickMenu = () => {
-
+        props.onOpenMenuDrawer();
     }
 
     return (
