@@ -53,7 +53,6 @@ const Map = observer(() => {
         callAPIgetMapPositionsAll();
     },[])
 
-
     useEffect(()=>{
         if( !validation.checkEmpty(latitude) && !validation.checkEmpty(longitude) ){
             fnMovePositions();
@@ -192,13 +191,20 @@ const Map = observer(() => {
                     onOpenMenuDrawer={onOpenMenuDrawer}
                 />
             </div>
+
+            {/*
+            TODO : map div height 100% 이슈, 리스트 조회 후 지도 잘림 현상, 리스트 스크롤 바 수정, 검색창 focus시 뷰 교체 로직 재작성
+            */}
             <div id='map' className={style.map}>
-                <div className={style.getlocation}
-                     onClick={fnGetLocation}>
-                    <div className={style.btn}>
-                        <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
+                {
+                    !onFocusInputBox &&
+                    <div className={style.getlocation}
+                         onClick={fnGetLocation}>
+                        <div className={style.btn}>
+                            <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
             {
                 onFocusInputBox &&

@@ -1,6 +1,8 @@
 .inputboxwrapper{
     display: flex;
     flex-direction: row;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.096);
+    width: 100%;
 }
 
 .input{
@@ -15,6 +17,7 @@
     color:#424242;
     position: relative;
     height: 100%;
+    width: 100%;
     margin-left: 0.5em;
 }
 
