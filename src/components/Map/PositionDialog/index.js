@@ -65,16 +65,22 @@ const PositionDialog = observer ((props) => {
     선택한 위치의 코멘트를 등록합니다.
      */
     const callAPIAddCommnet = async () => {
-        const params = {
-            positionId : selectedPositionId,
-            content : content
-        }
-        const result = await addMapComment(params);
-        if(result.resultCode === 200){
-            callAPIgetPositionsBoards();
+
+        if(validation.checkEmpty(content)){
             setSnackBarOpen(true);
-            setSnackBarMsg("코멘트 등록이 완료되었습니다.");
-            setContent("");
+            setSnackBarMsg("내용을 입력해주세요.");
+        }else{
+            const params = {
+                positionId : selectedPositionId,
+                content : content
+            }
+            const result = await addMapComment(params);
+            if(result.resultCode === 200){
+                callAPIgetPositionsBoards();
+                setSnackBarOpen(true);
+                setSnackBarMsg("코멘트 등록이 완료되었습니다.");
+                setContent("");
+            }
         }
     }
 
