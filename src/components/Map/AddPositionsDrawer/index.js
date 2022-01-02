@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {addMapPositions} from "../../../apis/MapApis";
-import {faBars, faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faGripLines} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import style from "./AddPositionsDrawer.module.css";
 import validation from "../../../utils/validation";
@@ -82,7 +82,7 @@ const AddPositionsDrawer = observer((props) => {
 
     return (
         <div className={style.drawer}>
-            <span><FontAwesomeIcon className={style.baricon} icon={faBars}/></span>
+            <span><FontAwesomeIcon className={style.baricon} icon={faGripLines}/></span>
             <div className={style.info}>
                 <div className={style.chulbong}>
                     <span className={style.name}>철봉</span>
