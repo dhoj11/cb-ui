@@ -76,6 +76,7 @@ const PositionDialog = observer ((props) => {
             }
             const result = await addMapComment(params);
             if(result.resultCode === 200){
+                setContent("");
                 callAPIgetPositionsBoards();
                 setSnackBarOpen(true);
                 setSnackBarMsg("코멘트 등록이 완료되었습니다.");
@@ -111,8 +112,9 @@ const PositionDialog = observer ((props) => {
                                 boards.map(item=>{
                                     return (
                                         <div className={style.content}>
-                                            <span><FontAwesomeIcon className={style.contenticon} icon={faCheck} /></span>
+                                            {/*<span><FontAwesomeIcon className={style.contenticon} icon={faCheck} /></span>*/}
                                             <span className={style.contenttext}>{item.content}</span>
+                                            <span className={style.date}>{item.date}</span>
                                         </div>
                                     )
                                 })
@@ -122,6 +124,7 @@ const PositionDialog = observer ((props) => {
 
                 <div className={style.inputwrapper}>
                     <input type="text"
+                           value={content}
                            className={style.input}
                            onChange={fnChangeContent}
                             />
