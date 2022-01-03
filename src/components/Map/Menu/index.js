@@ -78,11 +78,11 @@ const Menu = observer((props) => {
                 {/*    현재 서비스 개편 진행중입니다.<br/>*/}
                 {/*    서비스가 불안정 할 수 있습니다.<br/>*/}
                 {/*</p>*/}
-                {/*<div>*/}
-                {/*    <a href="https://open.kakao.com/o/gU0WMaPc">*/}
-                {/*        <span><FontAwesomeIcon className={style.talk} icon={faComment}/></span>*/}
-                {/*    </a>*/}
-                {/*</div>*/}
+                <div>
+                    <a href="https://open.kakao.com/o/gU0WMaPc">
+                        <span><FontAwesomeIcon className={style.talk} icon={faComment}/></span>
+                    </a>
+                </div>
                 <span className={style.author}>매일철봉 v2.0</span>
             </div>
         </div>
