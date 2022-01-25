@@ -98,9 +98,10 @@ const Map = observer(() => {
         const container = document.getElementById('map');
         const options = {
             center: new kakao.maps.LatLng(latitude, longitude),
-            level: 4
+            level: 7
         };
         setMap(new kakao.maps.Map(container, options));
+
     }
 
     /*

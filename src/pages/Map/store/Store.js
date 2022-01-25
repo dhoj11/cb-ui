@@ -8,8 +8,8 @@ class Store {
 
     @observable searchedLocation = null;
     @observable onFocusInputBox = false;
-    @observable latitude = 33.450701;
-    @observable longitude = 126.570667;
+    @observable latitude = 37.56690530047888;
+    @observable longitude = 126.97869751195513;
     @observable positions = [];
     @observable map = null;
     @observable snackbarOpen = false;
@@ -43,6 +43,7 @@ class Store {
 
     @action setMap = (obj) => {
         this.map = obj;
+        this.map.setMaxLevel(10);
     }
 
     @action setSnackBarOpen = (value) => {
