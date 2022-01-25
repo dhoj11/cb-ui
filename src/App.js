@@ -1,10 +1,9 @@
-import {Default, Mobile} from "./utils/layout/MediaQuery";
-import GlobalStyles from "./utils/layout/GlobalStyles";
-import SinglePage from "./utils/layout/MobileFrame/SinglePage/SinglePage";
+import {Default, Mobile} from "./components/layout/MediaQuery";
+import GlobalStyles from "./components/layout/GlobalStyles";
+import SinglePage from "./components/layout/MobileFrame/SinglePage/SinglePage";
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from "./components/Home";
-import Map from "./components/Map"
-
+import Home from "./pages/Home";
+import Map from "./pages/Map"
 
 function App() {
   return (
