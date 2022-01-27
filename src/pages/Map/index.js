@@ -208,10 +208,12 @@ const Map = observer(() => {
                 }
             </div>
             {
-                onFocusInputBox &&
-                    <div className={style.searchlist}>
+                onFocusInputBox
+                    ? <div className={style.searchlist}>
                         <SearchLocationList/>
-                    </div>
+                      </div>
+                    : null
+
             }
             <Modal
                 open={positionDialogOpen}
