@@ -10,7 +10,7 @@ function App() {
       <>
         <GlobalStyles/>
           <BrowserRouter>
-            <Mobile>
+            {/*<Mobile>*/}
               <SinglePage>
                 <Routes>
                     {/*<Route exact path="/" element={<Home />}/>*/}
@@ -18,16 +18,16 @@ function App() {
                     <Route path="/map" element={<Map />}/>
                 </Routes>
               </SinglePage>
-            </Mobile>
-            <Default>
-                <SinglePage>
-                    <Routes>
-                        {/*<Route exact path="/" element={<Home />}/>*/}
-                        <Route exact path="/" element={<Map />}/>
-                        <Route path="/map" element={<Map />}/>
-                    </Routes>
-                </SinglePage>
-            </Default>
+            {/*</Mobile>*/}
+            {/*<Default>*/}
+            {/*    <SinglePage>*/}
+            {/*        <Routes>*/}
+            {/*            /!*<Route exact path="/" element={<Home />}/>*!/*/}
+            {/*            <Route exact path="/" element={<Map />}/>*/}
+            {/*            <Route path="/map" element={<Map />}/>*/}
+            {/*        </Routes>*/}
+            {/*    </SinglePage>*/}
+            {/*</Default>*/}
           </BrowserRouter>
       </>
   );
