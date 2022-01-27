@@ -43,7 +43,7 @@ const Map = observer(() => {
     const [selectedPosition, setSelectedPosition] = useState();
     const [positionDialogOpen, setPositionDialogOpen] = useState(false);
     const [addPositionDrawerOpen, setAddPositionDrawerOpen] = useState(false);
-    const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
+    const [menuDialogOpen, setMenuDialogOpen] = useState(false);
 
     const [selectLat, setSelectLat] = useState();
     const [selectLon, setSelectLon] = useState();
@@ -177,19 +177,19 @@ const Map = observer(() => {
         setSnackBarMsg("");
     }
 
-    const onOpenMenuDrawer = () => {
-        setMenuDrawerOpen(true);
+    const onOpenMenuDialog = () => {
+        setMenuDialogOpen(true);
     }
 
-    const onCloseMenuDrawer = () => {
-        setMenuDrawerOpen(false);
+    const onCloseMenuDialog = () => {
+        setMenuDialogOpen(false);
     }
 
     return (
         <div className={style.container}>
             <div className={style.searchwrapper}>
                 <SearchInputBox
-                    onOpenMenuDrawer={onOpenMenuDrawer}
+                    onOpenMenuDialog={onOpenMenuDialog}
                 />
             </div>
 
@@ -247,17 +247,28 @@ const Map = observer(() => {
                     />
             </SwipeableDrawer>
 
-            <SwipeableDrawer
-                PaperProps={{sx: { width: "95%",
-                        borderTopRightRadius: 10, },}}
-                style={{borderRadius: "20px"}}
-                anchor='left'
-                open={menuDrawerOpen}
-                onClose={() => onCloseMenuDrawer()}
-                onOpen={() => onOpenMenuDrawer()}
-            >
-                <Menu/>
-            </SwipeableDrawer>
+            {/*<SwipeableDrawer*/}
+            {/*    PaperProps={{sx: { width: "95%",*/}
+            {/*            borderTopRightRadius: 10, },}}*/}
+            {/*    style={{borderRadius: "20px"}}*/}
+            {/*    anchor='left'*/}
+            {/*    open={menuDrawerOpen}*/}
+            {/*    onClose={() => onCloseMenuDrawer()}*/}
+            {/*    onOpen={() => onOpenMenuDrawer()}*/}
+            {/*>*/}
+            {/*    <Menu/>*/}
+            {/*</SwipeableDrawer>*/}
+
+            <Modal
+                open={menuDialogOpen}
+                onClose={onCloseMenuDialog}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                >
+                <Bar>
+                    <Menu/>
+                </Bar>
+            </Modal>
 
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}

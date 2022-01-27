@@ -40,10 +40,8 @@ const Board = observer((props) => {
             if (result.resultCode === 200) {
                 setSnackBarOpen(true);
                 setSnackBarMsg("등록이 완료되었습니다.");
-
                 setTitle("");
                 setContent("");
-                props.onCloseBoard();
             }
         }
     }
@@ -52,21 +50,26 @@ const Board = observer((props) => {
     return (
         <div className={style.board}>
             <div className={style.container}>
+                <div className={style.desc}>
+                <span className={style.desctext}>
+                    개선사항이나 문의를 남겨주세요<br/>
+                    dev.chulbong@gmail.com
+                </span>
+                </div>
                 <div className={style.title}>
                     <input type="text"
                            value={title|| ''}
                            onChange={onChangeTitle}
                            className={style.inputtitle}
-                           placeholder="제목을 입력하세요."/>
+                           placeholder="제목"/>
 
                 </div>
                 <div className={style.content}>
-                    <textarea
+                    <input type="text"
                            onChange={onChangeContent}
                            value={content|| ''}
-                           rows="5"
                            className={style.inputcontent}
-                           placeholder="문의 내용을 입력하세요."/>
+                           placeholder="문의내용"/>
                 </div>
             </div>
             <div className={style.btn}

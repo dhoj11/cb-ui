@@ -34,7 +34,7 @@ const SearchInputBox = observer((props) => {
     }
 
     const onClickMenu = () => {
-        props.onOpenMenuDrawer();
+        props.onOpenMenuDialog();
     }
 
     return (

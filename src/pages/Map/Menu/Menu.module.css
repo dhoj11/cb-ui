@@ -1,11 +1,17 @@
 .menu{
-    height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 50%;
+    background-color: #FEFEFE;
+    border-radius: 10px;
+    boxShadow: 24;
+    p: 4;
 }
 
 .top{
@@ -21,14 +27,12 @@
 }
 
 .title{
-    margin-top: 1.5em;
-    font-size: 1.2em;
-    font-weight: 700;
+    margin-top: 1.2em;
+    font-size: 1em;
+    font-weight: 600;
 }
 
-.title2{
-    color: #1565C0;
-}
+
 
 .desc{
     margin: 0.1em;
@@ -103,6 +107,12 @@
 
 .bottom{
     text-align: center;
+    margin: 1em;
+}
+
+.donate{
+    font-size: 0.8em;
+    font-weight: 700;
 }
 
 .notice{
