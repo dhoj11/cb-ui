@@ -27,6 +27,9 @@ const Menu = observer((props) => {
                     <a href="https://qr.kakaopay.com/Ej7pA45zG">
                         카카오페이 후원하기
                     </a>
+                </span><br/>
+                <span className={style.account}>
+                    카카오뱅크 3333-01-1736199
                 </span>
             </div>
         </div>
