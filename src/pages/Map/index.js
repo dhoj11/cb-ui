@@ -6,7 +6,7 @@ import store from "./store/Store";
 import SearchLocationList from "./SearchLocationList";
 import {GetMapPositionsAll} from "../../apis/MapApis";
 import validation from "../../utils/validation";
-import {Modal, Snackbar, SwipeableDrawer} from "@mui/material";
+import {Drawer, Modal, Snackbar, SwipeableDrawer} from "@mui/material";
 import PositionDialog from "./PositionDialog";
 import AddPositionsDrawer from "./AddPositionsDrawer";
 import point from "../../utils/img/point.png"
@@ -228,7 +228,7 @@ const Map = observer(() => {
                 </Bar>
             </Modal>
 
-            <SwipeableDrawer
+            <Drawer
                 PaperProps={{sx: { height: "30%",
                         borderTopLeftRadius: 20,
                         borderTopRightRadius: 20, },}}
@@ -245,7 +245,7 @@ const Map = observer(() => {
                     drawPositions={drawPositions}
                     onClosePositionDrawer={onClosePositionDrawer}
                     />
-            </SwipeableDrawer>
+            </Drawer>
 
             {/*<SwipeableDrawer*/}
             {/*    PaperProps={{sx: { width: "95%",*/}
