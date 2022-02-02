@@ -149,13 +149,13 @@ const Map = observer(() => {
         }
 
         if(!validation.checkEmpty(map)) {
-            kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+            kakao.maps.event.addListener(map, 'click', (mouseEvent) => {
                 const latlng = mouseEvent.latLng;
                 marker.setPosition(latlng);
                 marker.setMap(map);
                 setSelectLat(latlng.Ma);
                 setSelectLon(latlng.La);
-                setAddPositionDrawerOpen(true);
+                onOpenPositionDrawer();
             });
         }
     }
@@ -171,6 +171,13 @@ const Map = observer(() => {
     const onOpenPositionDrawer = () => {
         setAddPositionDrawerOpen(true);
     }
+
+    const toggleDrawer = (open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setAddPositionDrawerOpen(open);
+    };
 
     const onCloseSnackBar = () => {
         setSnackBarOpen(false);
@@ -229,14 +236,15 @@ const Map = observer(() => {
             </Modal>
 
             <Drawer
-                PaperProps={{sx: { height: "30%",
+                PaperProps={{sx: {
+                        // height: "30%",
                         borderTopLeftRadius: 20,
                         borderTopRightRadius: 20, },}}
                 style={{borderRadius: "20px"}}
                 anchor='bottom'
                 open={addPositionDrawerOpen}
-                onClose={() => onClosePositionDrawer()}
-                onOpen={() => onOpenPositionDrawer()}
+                //onClose={ () => onClosePositionDrawer() }
+                //onOpen={toggleDrawer(true)}
                 >
                 <AddPositionsDrawer
                     latitude={selectLat}
