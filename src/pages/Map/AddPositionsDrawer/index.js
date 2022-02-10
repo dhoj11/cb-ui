@@ -34,6 +34,7 @@ const AddPositionsDrawer = observer((props) => {
     const fnCheckValidation = () => {
         if(validation.checkEmpty(chulbongCount) && validation.checkEmpty(pyeongCount)){
             setSnackBarMsg("철봉 혹은 평행봉 수량을 입력해주세요.");
+            setSnackBarOpen(true);
             return
         }
 
@@ -61,6 +62,7 @@ const AddPositionsDrawer = observer((props) => {
         const result = await addMapPositions(params);
         if(result.resultCode === 200){
             setSnackBarMsg("등록이 완료되었습니다.");
+            setSnackBarOpen(true);
             props.callAPIgetMapPositionsAll();
             props.onClosePositionDrawer();
             props.drawPositions()

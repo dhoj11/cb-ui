@@ -50,7 +50,6 @@ class Store {
     }
 
     @action setSnackBarMsg = (msg) => {
-        this.snackbarOpen = true;
         this.snackBarMsg = msg;
     }
 }
