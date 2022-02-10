@@ -19,6 +19,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    height: 10%;
 }
 
 .content{
@@ -65,33 +66,22 @@
     text-align: center;
 }
 
-.menuitem{
+.list{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    text-align: center;
-    padding: 1em;
-    width: 100%;
-    border-bottom: 1px solid #e7e7e7;
-    font-size: 0.9em;
-    font-weight: 600;
+    margin: 0.5em;
+    height: 10%;
 }
 
-.menuitem:hover {
-    background-color: #fafafa;
-}
-.menuicon{
-    margin-right: 1em;
-    color: #afafaf;
+.item{
+    margin : 0 0.8em 0 0.8em;
 }
 
-.menutitle{
-    text-align: center;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #505050;
+.itemtitle{
+    font-size: 0.8em;
+    font-weight: 500;
 }
-
 
 .icon{
     font-size: 3em;
@@ -105,11 +95,11 @@
     margin: 1em;
 }
 
-.bottom{
+.bottom {
     text-align: center;
-    margin: 1em;
+    margin: 0.5em;
+    height: 10%;
 }
-
 .donate{
     font-size: 0.8em;
     font-weight: 700;

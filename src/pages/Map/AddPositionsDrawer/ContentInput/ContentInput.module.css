@@ -1,0 +1,14 @@
+.inputwrapper{
+    align-items: center;
+    width: 100%;
+    bottom : 1em;
+    padding : 0 1em;
+}
+
+.input{
+    border-bottom : 1px solid #d3d3d3;
+    height: 2em;
+    width: 100%;
+    font-size: 1em;
+    padding-left: 1em;
+}

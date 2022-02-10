@@ -1,5 +1,4 @@
 import {action, observable, makeAutoObservable} from "mobx";
-import {tabsListUnstyledClasses} from "@mui/material";
 
 class Store {
     constructor() {
@@ -51,6 +50,7 @@ class Store {
     }
 
     @action setSnackBarMsg = (msg) => {
+        this.snackbarOpen = true;
         this.snackBarMsg = msg;
     }
 }

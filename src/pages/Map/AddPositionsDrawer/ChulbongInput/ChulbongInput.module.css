@@ -1,0 +1,19 @@
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.name{
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #424242;
+}
+
+.count{
+    width: 3em;
+    height: 2em;
+    font-size: 1.3em;
+    font-weight: 700;
+    text-align: center;
+}

@@ -13,21 +13,6 @@
     color: #d3d3d3;
 }
 
-.inputwrapper{
-    align-items: center;
-    width: 100%;
-    bottom : 1em;
-    padding : 0 1em;
-}
-
-.input{
-    border-bottom : 1px solid #d3d3d3;
-    height: 2em;
-    width: 100%;
-    font-size: 1em;
-    padding-left: 1em;
-}
-
 .addbtn{
     display: flex;
     justify-content: center;
@@ -55,22 +40,3 @@
     color: #989898;
 }
 
-.info{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.name{
-    font-size: 1.1em;
-    font-weight: 600;
-    color: #424242;
-}
-
-.count{
-    width: 3em;
-    height: 2em;
-    font-size: 1.3em;
-    font-weight: 700;
-    text-align: center;
-}

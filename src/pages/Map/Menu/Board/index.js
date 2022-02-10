@@ -50,12 +50,6 @@ const Board = observer((props) => {
     return (
         <div className={style.board}>
             <div className={style.container}>
-                <div className={style.desc}>
-                <span className={style.desctext}>
-                    개선사항이나 문의를 남겨주세요<br/>
-                    dev.chulbong@gmail.com
-                </span>
-                </div>
                 <div className={style.title}>
                     <input type="text"
                            value={title|| ''}
@@ -75,6 +69,11 @@ const Board = observer((props) => {
             <div className={style.btn}
                  onClick={callAPIaddBoard}>
                 <span className={style.text}>작성완료</span>
+            </div>
+            <div className={style.desc}>
+                    <span className={style.desctext}>
+                        dev.chulbong@gmail.com
+                    </span>
             </div>
         </div>
     )
