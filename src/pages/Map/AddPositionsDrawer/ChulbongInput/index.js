@@ -4,8 +4,6 @@ import style from "./ChulbongInput.module.css";
 import validation from "../../../../utils/validation";
 import store from "../../store/Store";
 
-
-
 const ChulbongInput = observer((props) => {
 
     const {
@@ -40,7 +38,6 @@ const ChulbongInput = observer((props) => {
             props.fnChangePyeongCount(count);
         }
     }
-
 
     return (
         <div className={style.info}>

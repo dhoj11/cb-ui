@@ -5,12 +5,7 @@ class store {
         makeAutoObservable(this);
     }
 
-    @observable viewType = null;
 
-    @action
-    setViewType = (type) => {
-        this.viewType = type;
-    }
 }
 
 export default store

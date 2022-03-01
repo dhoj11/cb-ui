@@ -15,93 +15,71 @@ import {faLocationArrow} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Menu from "./Menu";
 
-const Bar = React.forwardRef((props, ref) => (
-    <span {...props} ref={ref}>
-        {props.children}
-    </span>
-));
-
 /*global kakao*/
 const Map = observer(() => {
 
     const {
-        onFocusInputBox,
-        latitude,
-        longitude,
-        positions,
-        map,
-        snackbarOpen,
-        snackBarMsg,
-        setSnackBarOpen,
-        setSnackBarMsg,
+        map,                // 카카오맵 객체
+        positions,          // 등록된 위치정보
+        latitude,           // 선택된 위도
+        longitude,          // 선택된 경도
+        snackbarOpen,       // 스낵바 활성화
+        snackBarMsg,        // 스낵바 메세지
+
         setMap,
         setPositions,
         setLatitude,
-        setLongitude
+        setLongitude,
+        setSnackBarOpen,
+        setSnackBarMsg,
+
     } = store
 
     const [selectedPosition, setSelectedPosition] = useState();
-    const [positionDialogOpen, setPositionDialogOpen] = useState(false);
-    const [addPositionDrawerOpen, setAddPositionDrawerOpen] = useState(false);
-    const [menuDialogOpen, setMenuDialogOpen] = useState(false);
-
     const [selectLat, setSelectLat] = useState();
     const [selectLon, setSelectLon] = useState();
+
+    const [addDrawerOpen, setAddDrawerOpen] = useState(false);
+
+    const [positionDialogOpen, setPositionDialogOpen] = useState(false);
+
+    const [searchListDialogOpen, setSearchListDialogOpen] = useState(false);
+
+    const [menuDialogOpen, setMenuDialogOpen] = useState(false);
+
 
     useEffect( ()=>{
         fnInitMap();
         callAPIgetMapPositionsAll();
     },[])
 
+    /*
+    선택한 위치가 변경될 때마다 지도의 중심을 변경시킵니다.
+     */
     useEffect(()=>{
         if( !validation.checkEmpty(latitude) && !validation.checkEmpty(longitude) ){
             fnMovePositions();
         }
     },[latitude, longitude])
 
+    /*
+    마커를 화면에 표시합니다.
+     */
     useEffect(()=>{
         drawPositions();
     },[positions]);
 
-    const fnMovePositions = () => {
-        const moveLatLng = new kakao.maps.LatLng(latitude, longitude);
-        if(!validation.checkEmpty(map)){
-            map.panTo(moveLatLng);
-            map.setLevel(3);
-        } else {
-            //console.log("map obj error...")
-        }
-    }
-
-    const fnGetLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                let lat = position.coords.latitude;
-                let lon = position.coords.longitude;
-
-                setLatitude(lat);
-                setLongitude(lon);
-
-                fnMovePositions();
-            });
-        } else{
-            setSnackBarMsg("현재 위치정보를 가져올 수 없습니다.");
-            setSnackBarOpen(true);
-        }
-    }
-
     /*
     map 객체를 생성하고 초기화 합니다.
-    생성된 객체를 상태에 저장합니다.
+    생성된 객체를 스토어 상태에 저장합니다.
      */
     const fnInitMap = () => {
         const container = document.getElementById('map');
         const options = {
             center: new kakao.maps.LatLng(latitude, longitude),
-            level: 7
+            level: 6
         };
         setMap(new kakao.maps.Map(container, options));
-
     }
 
     /*
@@ -120,6 +98,38 @@ const Map = observer(() => {
                 }
             })
             setPositions(positionList);
+        }
+    }
+
+    /*
+    선택한 위치로 지도의 중심을 이동합니다.
+     */
+    const fnMovePositions = () => {
+        const moveLatLng = new kakao.maps.LatLng(latitude, longitude);
+        if(!validation.checkEmpty(map)){
+            map.panTo(moveLatLng);
+            map.setLevel(3);
+        }
+    }
+
+    /*
+    현재위치정보 가져오기
+    Geolocation
+     */
+    const fnGetLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+
+                setLatitude(lat);
+                setLongitude(lon);
+
+                fnMovePositions();
+            });
+        } else{
+            setSnackBarMsg("현재 위치정보를 가져올 수 없습니다.");
+            setSnackBarOpen(true);
         }
     }
 
@@ -143,8 +153,8 @@ const Map = observer(() => {
 
 
             kakao.maps.event.addListener(marker, 'click', function () {
-                setSelectedPosition(positions[i].positionId)
-                setPositionDialogOpen(true);
+                setSelectedPosition(positions[i].positionId);
+                onOpenPositionDialog();
             },  {passive: true})
         }
 
@@ -155,33 +165,25 @@ const Map = observer(() => {
                 marker.setMap(map);
                 setSelectLat(latlng.Ma);
                 setSelectLon(latlng.La);
-                onOpenPositionDrawer();
+                onOpenAddDrawer();
             });
         }
     }
 
+    const onOpenAddDrawer = () => {
+        setAddDrawerOpen(true);
+    }
+
+    const onCloseAddDrawer = () => {
+        setAddDrawerOpen(false);
+    }
+
+    const onOpenPositionDialog = () => {
+        setPositionDialogOpen(true);
+    }
+
     const onClosePositionDialog = () => {
         setPositionDialogOpen(false);
-    }
-
-    const onClosePositionDrawer = () => {
-        setAddPositionDrawerOpen(false);
-    }
-
-    const onOpenPositionDrawer = () => {
-        setAddPositionDrawerOpen(true);
-    }
-
-    const toggleDrawer = (open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setAddPositionDrawerOpen(open);
-    };
-
-    const onCloseSnackBar = () => {
-        setSnackBarOpen(false);
-        setSnackBarMsg("");
     }
 
     const onOpenMenuDialog = () => {
@@ -192,90 +194,101 @@ const Map = observer(() => {
         setMenuDialogOpen(false);
     }
 
+    const onOpenSearchListDialog = () => {
+        setSearchListDialogOpen(true);
+    }
+
+    const onCloseSearchListDialog = () => {
+        setSearchListDialogOpen(false);
+    }
+
+    const onCloseSnackBar = () => {
+        setSnackBarOpen(false);
+        setSnackBarMsg("");
+    }
+
     return (
         <div className={style.container}>
-            <div className={style.searchwrapper}>
+            <div className={style.search}>
                 <SearchInputBox
+                    searchListDialogOpen={searchListDialogOpen}
                     onOpenMenuDialog={onOpenMenuDialog}
+                    onOpenSearchListDialog={onOpenSearchListDialog}
+                    onCloseSearchListDialog={onCloseSearchListDialog}
                 />
             </div>
-
-            {/*
-            TODO : map div height 100% 이슈, 리스트 조회 후 지도 잘림 현상, 리스트 스크롤 바 수정, 검색창 focus시 뷰 교체 로직 재작성
-            */}
             <div id='map' className={style.map}>
-                {
-                    !onFocusInputBox &&
-                    <div className={style.getlocation}
-                         onClick={fnGetLocation}>
-                        <div className={style.btn}>
-                            <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
-                        </div>
-                    </div>
-                }
+                <div className={style.mapIcon}
+                     onClick={fnGetLocation}>
+                        <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
+                </div>
             </div>
-            {
-                onFocusInputBox
-                    ? <div className={style.searchlist}>
-                        <SearchLocationList/>
-                      </div>
-                    : null
 
-            }
+            {/*위치추가 드로어블*/}
+            <Drawer
+                    PaperProps={{sx: {
+                                    maxWidth: "400px",
+                                    width: "100%",
+                                    borderTopLeftRadius: 20,
+                                    borderTopRightRadius: 20,
+                                    margin: "auto"},
+                                }}
+
+                    style={{
+                            borderRadius: "20px",
+                            position: 'absolute',
+                            maxWidth: "400px",
+                            width: "100%",
+                            }}
+                    anchor='bottom'
+                    variant="temporary"
+                    open={addDrawerOpen}
+                    >
+                    <AddPositionsDrawer
+                        latitude={selectLat}
+                        longitude={selectLon}
+                        callAPIgetMapPositionsAll={callAPIgetMapPositionsAll}
+                        drawPositions={drawPositions}
+                        onCloseAddDrawer={onCloseAddDrawer}
+                    />
+            </Drawer>
+
+            {/*위치검색 다이얼로그*/}
+            <Modal
+                open={searchListDialogOpen}
+                onClose={onCloseSearchListDialog}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                disableAutoFocus={true}
+                disableRestoreFocus={true}
+                style={{zIndex:50}}
+            >
+                <SearchLocationList
+                    onCloseSearchListDialog={onCloseSearchListDialog}/>
+
+            </Modal>
+
+            {/*마커정보 다이얼로그*/}
             <Modal
                 open={positionDialogOpen}
                 onClose={onClosePositionDialog}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 >
-                <Bar>
                     <PositionDialog
                         selectedPositionId = {selectedPosition}
                     />
-                </Bar>
+
             </Modal>
 
-            <Drawer
-                PaperProps={{sx: {
-                        // height: "30%",
-                        borderTopLeftRadius: 20,
-                        borderTopRightRadius: 20, },}}
-                style={{borderRadius: "20px"}}
-                anchor='bottom'
-                open={addPositionDrawerOpen}
-                //onClose={ () => onClosePositionDrawer() }
-                //onOpen={toggleDrawer(true)}
-                >
-                <AddPositionsDrawer
-                    latitude={selectLat}
-                    longitude={selectLon}
-                    callAPIgetMapPositionsAll={callAPIgetMapPositionsAll}
-                    drawPositions={drawPositions}
-                    onClosePositionDrawer={onClosePositionDrawer}
-                    />
-            </Drawer>
-
-            {/*<SwipeableDrawer*/}
-            {/*    PaperProps={{sx: { width: "95%",*/}
-            {/*            borderTopRightRadius: 10, },}}*/}
-            {/*    style={{borderRadius: "20px"}}*/}
-            {/*    anchor='left'*/}
-            {/*    open={menuDrawerOpen}*/}
-            {/*    onClose={() => onCloseMenuDrawer()}*/}
-            {/*    onOpen={() => onOpenMenuDrawer()}*/}
-            {/*>*/}
-            {/*    <Menu/>*/}
-            {/*</SwipeableDrawer>*/}
-
+            {/*메뉴 다이얼로그*/}
             <Modal
                 open={menuDialogOpen}
                 onClose={onCloseMenuDialog}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 >
-                <Bar>
-                    <Menu/>
-                </Bar>
+                <Menu/>
             </Modal>
 
             <Snackbar
@@ -284,8 +297,7 @@ const Map = observer(() => {
                 onClose={onCloseSnackBar}
                 message={snackBarMsg}
                 autoHideDuration={3000}
-            />
-
+                />
         </div>
     )
 });

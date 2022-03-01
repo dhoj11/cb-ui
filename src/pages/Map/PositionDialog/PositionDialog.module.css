@@ -6,6 +6,7 @@
     transform: translate(-50%, -50%);
     width: 90%;
     height: 50%;
+    max-width: 400px;
     min-height: 300px;
     background-color: #FEFEFE;
     border-radius: 10px;
@@ -53,7 +54,7 @@
     color: #212121;
 }
 
-.contentwrapper{
+.comments{
     display: flex;
     flex-direction: column;
     height: 50%;
@@ -82,7 +83,7 @@
 }
 
 
-.contenttext{
+.text{
     padding: 0.5em 0;
     padding-left: 0.5em;
     padding-right: 0.5em;
@@ -93,7 +94,7 @@
 
 }
 
-.inputwrapper{
+.input{
     position: relative;
     align-items: center;
     width: 100%;
@@ -101,7 +102,7 @@
     padding : 0 1em;
 }
 
-.input{
+.inputContent{
     border : 1px solid #d3d3d3;
     border-radius: 15px;
     height: 2em;
@@ -127,8 +128,4 @@
 .icon{
     color: #FEFEFE;
     font-weight: 800;
-}
-
-.contenticon{
-    font-size: 0.8em;
 }

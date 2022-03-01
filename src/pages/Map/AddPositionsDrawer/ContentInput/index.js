@@ -2,7 +2,6 @@ import React from "react"
 import {observer} from "mobx-react";
 import style from "./ContentInput.module.css";
 
-
 const ContentInput = observer((props) => {
 
    return(

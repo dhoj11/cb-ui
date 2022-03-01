@@ -1,6 +1,6 @@
 import React, {useState} from "react"
-import {addMapPositions} from "../../../apis/MapApis";
-import {faGripLines, faChevronDown} from "@fortawesome/free-solid-svg-icons";
+import {addMapPosition} from "../../../apis/MapApis";
+import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import style from "./AddPositionsDrawer.module.css";
 import validation from "../../../utils/validation";
@@ -47,7 +47,7 @@ const AddPositionsDrawer = observer((props) => {
         }
     }
 
-    const callAPIaddPositions = async () => {
+    const callAPIAddPosition = async () => {
 
         fnCheckValidation();
 
@@ -59,22 +59,24 @@ const AddPositionsDrawer = observer((props) => {
             content : content
         }
 
-        const result = await addMapPositions(params);
+        const result = await addMapPosition(params);
         if(result.resultCode === 200){
             setSnackBarMsg("등록이 완료되었습니다.");
             setSnackBarOpen(true);
+            
             props.callAPIgetMapPositionsAll();
-            props.onClosePositionDrawer();
+            props.onCloseAddDrawer();
             props.drawPositions()
         }
     }
 
     return (
         <div className={style.drawer}>
-            <span onClick={()=>props.onClosePositionDrawer()}>
+            <span
+                onClick={()=>props.onCloseAddDrawer()}>
                 <FontAwesomeIcon
-                className={style.baricon}
-                icon={faChevronDown}
+                    className={style.baricon}
+                    icon={faChevronDown}
                 />
             </span>
             <ChulbongInput
@@ -86,9 +88,9 @@ const AddPositionsDrawer = observer((props) => {
             <ContentInput
                 fnChangeContent={fnChangeContent}
                 />
-            <div className={style.addbtn}
-                 onClick={callAPIaddPositions}>
-                <span className={style.text}>
+            <div className={style.addBtn}
+                 onClick={callAPIAddPosition}>
+                <span className={style.btnText}>
                     확인
                 </span>
             </div>

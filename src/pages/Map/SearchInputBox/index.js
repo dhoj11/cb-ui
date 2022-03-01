@@ -8,10 +8,7 @@ import validation from "../../../utils/validation";
 
 const SearchInputBox = observer((props) => {
     const {
-        onFocusInputBox,
-        searchedLocation,
         setSearchedLocation,
-        setOnFocusInputBox
     } = store
 
     const onChangeSearchedLocation = (event) => {
@@ -22,15 +19,11 @@ const SearchInputBox = observer((props) => {
     }
 
     const onFocusInput = () => {
-        setOnFocusInputBox(true)
+        props.onOpenSearchListDialog()
     }
 
     const onCloseSearchList = () => {
-        setOnFocusInputBox(false)
-    }
-
-    const onBlurInputBox = () => {
-       // setOnFocusInputBox(false);
+        props.onCloseSearchListDialog();
     }
 
     const onClickMenu = () => {
@@ -38,25 +31,24 @@ const SearchInputBox = observer((props) => {
     }
 
     return (
-        <div className={style.inputboxwrapper}>
-            <div className={style.icon}>
+        <div className={style.search}>
+            <div className={style.btn}>
                 {
-                    onFocusInputBox
-                    ? <div className={style.closebtn} onClick={onCloseSearchList}>
-                        <span><FontAwesomeIcon className={style.btn} icon={faChevronLeft}/></span>
+                    props.searchListDialogOpen
+                    ? <div className={style.closeBtn} onClick={onCloseSearchList}>
+                        <span><FontAwesomeIcon className={style.icon} icon={faChevronLeft}/></span>
                       </div>
-                    : <div className={style.menubtn} onClick={onClickMenu}>
-                        <span><FontAwesomeIcon className={style.btn} icon={faBars}/></span>
+                    : <div className={style.menuBtn} onClick={onClickMenu}>
+                        <span><FontAwesomeIcon className={style.icon} icon={faBars}/></span>
                       </div>
                 }
             </div>
             <div className={style.input}>
                 <input type="text"
-                       className={style.inputbox}
+                       className={style.inputText}
                        placeholder="위치 · 장소를 입력하세요."
                        onChange={onChangeSearchedLocation}
                        onFocus={onFocusInput}
-                       onBlur={onBlurInputBox}
                        />
             </div>
         </div>

@@ -1,4 +1,4 @@
-.inputboxwrapper{
+.search{
     display: flex;
     flex-direction: row;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.096);
@@ -6,12 +6,35 @@
     height: 100%;
 }
 
+.btn{
+    display: flex;
+    align-items: center;
+    width: 1.5em;
+}
+
+.icon{
+    position: relative;
+    color: #989898;
+    font-size: 1.1em;
+    margin-left: 0.5em;
+}
+
+.closeBtn{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.menuBtn{
+    display: table-cell;
+    vertical-align: middle;
+}
+
 .input{
     display: table-cell;
     vertical-align: middle;
 }
 
-.inputbox{
+.inputText{
     border: 0px solid #fff;
     font-size: 1em;
     font-weight: 600;
@@ -20,32 +43,16 @@
     height: 100%;
     width: 100%;
     margin-left: 0.5em;
+    z-index: 10000000;
 }
 
-.inputbox:focus {
+.inputText:focus {
     outline: none;
     /* border: 2px solid #1565c07c; */
 }
 
-.icon{
-    display: flex;
-    align-items: center;
-    width: 1.5em;
-}
 
-.closebtn{
-    display: table-cell;
-    vertical-align: middle;
-}
 
-.menubtn{
-    display: table-cell;
-    vertical-align: middle;
-}
 
-.btn{
-    position: relative;
-    color: #989898;
-    font-size: 1.1em;
-    margin-left: 0.5em;
-}
+
+

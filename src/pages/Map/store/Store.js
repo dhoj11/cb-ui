@@ -5,12 +5,12 @@ class Store {
         makeAutoObservable(this);
     }
 
+    @observable map = null;                         // 카카오맵 객체
     @observable searchedLocation = null;
     @observable onFocusInputBox = false;
     @observable latitude = 37.56690530047888;
     @observable longitude = 126.97869751195513;
     @observable positions = [];
-    @observable map = null;
     @observable snackbarOpen = false;
     @observable snackBarMsg = null;
 
@@ -42,7 +42,7 @@ class Store {
 
     @action setMap = (obj) => {
         this.map = obj;
-        this.map.setMaxLevel(10);
+        // this.map.setMaxLevel(10);
     }
 
     @action setSnackBarOpen = (value) => {

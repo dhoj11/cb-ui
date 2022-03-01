@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid #d3d3d3;
-    width: 100vw;
+    width: 100%;
     hieght: 100%;
 }
 

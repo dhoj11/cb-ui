@@ -4,7 +4,6 @@
     text-align: center;
     justify-content: center;
     justify-items: center;
-    width: 100%;
 }
 
 .baricon{
@@ -13,7 +12,7 @@
     color: #d3d3d3;
 }
 
-.addbtn{
+.addBtn{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,18 +23,12 @@
     margin: 1em;
 }
 
-.addbtn:hover{
+.addBtn:hover{
     background-color: rgba(238, 238, 238, 0.84);
     color: #212121;
 }
 
-.addicon{
-    font-size: 1.2em;
-    color: #FEFEFE;
-    font-weight: 800;
-}
-
-.text{
+.btnText{
     font-weight: 700;
     color: #989898;
 }

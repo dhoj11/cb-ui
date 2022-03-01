@@ -1,6 +1,11 @@
 import axios from 'axios'
 
 const obj = {
+
+    addAuthHeader : function (authToken) {
+        axios.defaults.headers.common = {'Authorization': `bearer ${authToken}`}
+    },
+
     getURL: function (API, param) {
         let url = API;
 
@@ -12,7 +17,6 @@ const obj = {
                     } else {
                         url += '?';
                     }
-
                     url += val + '=' + param[val];
                 }
             }

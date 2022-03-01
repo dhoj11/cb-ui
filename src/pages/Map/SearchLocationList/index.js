@@ -18,7 +18,7 @@ const SearchLocationList = observer((props) => {
 
     useEffect(()=>{
         const ps = new kakao.maps.services.Places();
-        ps.keywordSearch(searchedLocation, placesSearchCB, {size: 8});
+        ps.keywordSearch(searchedLocation, placesSearchCB, {size: 10});
     },[searchedLocation])
 
     function placesSearchCB (data, status, pagination) {
@@ -38,6 +38,7 @@ const SearchLocationList = observer((props) => {
                             placeName={item.place_name}
                             latitude={item.y}
                             longitude={item.x}
+                            onCloseSearchListDialog={props.onCloseSearchListDialog}
                         />
                     )
                     : <Empty/>

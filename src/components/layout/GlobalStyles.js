@@ -2,6 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
+  :root {
+    --vh: 100%;
+  }
+  
   ${reset}
   * {
     box-sizing: border-box;
