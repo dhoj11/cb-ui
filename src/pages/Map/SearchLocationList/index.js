@@ -4,12 +4,12 @@ import {observer} from "mobx-react";
 import store from "../store/Store";
 import SearchLocationItem from "./SearchLocationItem/";
 import Empty from "./Empty";
+import validation from "../../../utils/validation";
 
 /*global kakao*/
 const SearchLocationList = observer((props) => {
 
     const {
-        onFocusInputBox,
         searchedLocation
     } = store
 
@@ -17,8 +17,15 @@ const SearchLocationList = observer((props) => {
     const [searchedLocationList, setSearchedLocationList] = useState([]);
 
     useEffect(()=>{
-        const ps = new kakao.maps.services.Places();
-        ps.keywordSearch(searchedLocation, placesSearchCB, {size: 10});
+
+        if(!validation.isEmpty(searchedLocation)) {
+            const ps = new kakao.maps.services.Places();
+            ps.keywordSearch(searchedLocation, placesSearchCB, {size: 10});
+        }
+        else{
+            setSearchedLocationList([]);
+        }
+
     },[searchedLocation])
 
     function placesSearchCB (data, status, pagination) {

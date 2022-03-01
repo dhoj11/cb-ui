@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useRef, useState} from "react"
 import style from "./SearchInpubBox.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBars, faChevronLeft} from "@fortawesome/free-solid-svg-icons";
@@ -8,8 +8,15 @@ import validation from "../../../utils/validation";
 
 const SearchInputBox = observer((props) => {
     const {
+        searchedLocationName,
         setSearchedLocation,
     } = store
+
+    const inputRef = useRef(null);
+
+    useEffect(()=>{
+        inputRef.current.value = searchedLocationName;
+    },[searchedLocationName])
 
     const onChangeSearchedLocation = (event) => {
         const location = event.target.value;
@@ -46,6 +53,7 @@ const SearchInputBox = observer((props) => {
             </div>
             <div className={style.input}>
                 <input type="text"
+                       ref={inputRef}
                        className={style.inputText}
                        placeholder="위치 · 장소를 입력하세요."
                        onChange={onChangeSearchedLocation}

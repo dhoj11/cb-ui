@@ -10,12 +10,14 @@ const SearchLocationItem = observer((props) => {
     const {
         setLatitude,
         setLongitude,
+        setSearchedLocationName
     } = store
 
     const onClickLocationItem = () => {
         props.onCloseSearchListDialog();
         setLatitude(props.latitude)
         setLongitude(props.longitude);
+        setSearchedLocationName(props.placeName)
     }
 
     return (
