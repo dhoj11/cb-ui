@@ -33,7 +33,8 @@ const Information = observer((props) => {
     }
 
     return (
-        positionInfo ?
+        positionInfo
+            ?
             <div className={style.count}>
                 <div className={style.item}>
                     <span className={style.name}>철봉</span>
@@ -44,9 +45,9 @@ const Information = observer((props) => {
                     <span className={style.number}>{positionInfo.pyeong_count}</span>
                 </div>
             </div>
-            : <div className={style.loading}>
-                {" "}
-            </div>
+            :
+            <div className={style.loading}/>
+
     )
 });
 
