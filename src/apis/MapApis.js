@@ -1,5 +1,9 @@
 import axios from "../utils/axios"
 
+/*local
+http://192.168.31.197:8080/
+ */
+
 export function GetMapPositionsAll(){
     const url = axios.getURL('https://api.chulbong.kr/positions');
     return axios.get(url).then((response) => {
@@ -24,7 +28,7 @@ export function getMapPositionsBoards(param){
     })
 }
 
-export function addMapPositions(param){
+export function addMapPosition(param){
     const url = axios.getURL('https://api.chulbong.kr/positions');
     return axios.post(url, param).then((response) => {
         response = response.data;
