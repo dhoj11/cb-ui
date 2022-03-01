@@ -1,0 +1,50 @@
+.comments{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    overflow: auto;
+}
+
+.empty{
+    color: #989898;
+    font-size: 0.8em;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon{
+    font-size: 1.5em;
+    margin: 0.5em;
+}
+
+.loading{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1.5em;
+    margin: 1em;
+    height: 50%;
+    border-radius: 10px;
+    background-color: rgba(166, 166, 166, 0.2);
+}
+
+.loading::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 30%;
+    height: 50%;
+    transform: translateX(-100%);
+
+    background: linear-gradient(90deg, rgba(236, 236, 236, 0.4),
+    rgba(255, 255, 255, 0.52), rgba(236, 236, 236, 0.4));
+    animation: loading 0.8s infinite;
+}
+
+@keyframes loading {
+    100% {
+        transform: translateX(100%);
+    }
+}
