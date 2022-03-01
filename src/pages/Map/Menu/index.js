@@ -13,7 +13,7 @@ const Menu = observer((props) => {
     return (
         <div className={style.menu}>
             <div className={style.top}>
-                <span className={style.title}>문의하기</span>
+                <span className={style.title}>매일철봉</span>
             </div>
             <div className={style.content}>
                 <Board/>

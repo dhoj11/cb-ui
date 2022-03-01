@@ -57,9 +57,9 @@ const CommentList = observer((props) => {
                     <FontAwesomeIcon className={style.icon} icon={faExclamation}/>
                     <span>코멘트가 없습니다.</span>
                 </div>
-            : <div className={style.loading}>
-                {""}
-            </div>
+            : <div className={style.loading}/>
+
+
     )
 });
 

@@ -6,12 +6,12 @@ import store from "./store/Store";
 import SearchLocationList from "./SearchLocationList";
 import {GetMapPositionsAll} from "../../apis/MapApis";
 import validation from "../../utils/validation";
-import {Drawer, Modal, Snackbar, SwipeableDrawer} from "@mui/material";
+import {Drawer, Modal, Snackbar} from "@mui/material";
 import PositionDialog from "./PositionDialog";
 import AddPositionsDrawer from "./AddPositionsDrawer";
 import point from "../../utils/img/point.png"
 import addflag from "../../utils/img/flag.png"
-import {faLocationArrow} from "@fortawesome/free-solid-svg-icons";
+import {faLocationArrow, faPaperPlane} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Menu from "./Menu";
 
@@ -218,9 +218,13 @@ const Map = observer(() => {
                 />
             </div>
             <div id='map' className={style.map}>
-                <div className={style.mapIcon}
+                <div className={style.geoLocationIcon}
                      onClick={fnGetLocation}>
-                        <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
+                    <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
+                </div>
+                <div className={style.questionIcon}
+                     onClick={onOpenMenuDialog}>
+                        <FontAwesomeIcon className={style.icon} icon={faPaperPlane}/>
                 </div>
             </div>
 

@@ -31,7 +31,7 @@
     z-index: 0;
 }
 
-.mapIcon{
+.geoLocationIcon{
     position: fixed;
     background-color: #FEFEFE;
     padding: 0.5em;
@@ -47,6 +47,24 @@
     justify-content: center;
     align-items: center;
 }
+
+.questionIcon{
+    position: fixed;
+    background-color: #FEFEFE;
+    padding: 0.5em;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    z-index: 200;
+    top: 7em;
+    right: 1em;
+    border: 1px solid #d3d3d3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.096);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .btn{
 

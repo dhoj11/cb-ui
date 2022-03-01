@@ -38,9 +38,10 @@ const SearchInputBox = observer((props) => {
                     ? <div className={style.closeBtn} onClick={onCloseSearchList}>
                         <span><FontAwesomeIcon className={style.icon} icon={faChevronLeft}/></span>
                       </div>
-                    : <div className={style.menuBtn} onClick={onClickMenu}>
-                        <span><FontAwesomeIcon className={style.icon} icon={faBars}/></span>
-                      </div>
+                    : null
+                    // <div className={style.menuBtn} onClick={onClickMenu}>
+                    //     <span><FontAwesomeIcon className={style.icon} icon={faBars}/></span>
+                    //   </div>
                 }
             </div>
             <div className={style.input}>
