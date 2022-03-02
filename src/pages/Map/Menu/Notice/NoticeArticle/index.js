@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import style from "./NoticeArticle.module.css"
 import {observer} from "mobx-react";
+import {getNoticeOne} from "../../../../../apis/NoticeApis.";
 
 const NoticeArticle = observer((props) => {
 
