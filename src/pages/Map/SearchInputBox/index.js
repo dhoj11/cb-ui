@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react"
 import style from "./SearchInpubBox.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faBars, faChevronLeft} from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import {observer} from "mobx-react";
 import store from "../store/Store"
 import validation from "../../../utils/validation";

@@ -1,10 +1,5 @@
 import React, {useState} from "react"
 import style from "./Menu.module.css"
-
-import {faQuestion, faBullhorn} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
-
 import {observer} from "mobx-react";
 import Board from "./Board";
 import Notice from "./Notice";

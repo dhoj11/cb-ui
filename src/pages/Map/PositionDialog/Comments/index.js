@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useState} from "react"
 import style from "./Comments.module.css"
 import {observer} from "mobx-react";
 import CommentList from "./CommentList";

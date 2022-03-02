@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useState} from "react"
 import style from "./Notice.module.css"
 import {observer} from "mobx-react";
 import NoticeArticle from "./NoticeArticle";

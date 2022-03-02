@@ -1,7 +1,5 @@
 import { useMediaQuery } from "react-responsive"
 
-import {observer} from "mobx-react";
-
 // const Desktop = ({ children }) => {
 //   const isDesktop = useMediaQuery({ minWidth: 992 })
 //   return isDesktop ? children : null
