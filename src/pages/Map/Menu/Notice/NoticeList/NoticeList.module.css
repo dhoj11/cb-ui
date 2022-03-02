@@ -1,0 +1,45 @@
+.list{
+    margin: 0.5em;
+    height: 90%;
+    overflow: auto;
+}
+
+.list {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+.loading{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1.5em;
+    margin: 1em;
+    height: 3em;
+    border-radius: 10px;
+    background-color: rgba(166, 166, 166, 0.2);
+}
+
+.loading::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 30%;
+    height: 3em;
+    transform: translateX(-100%);
+
+    background: linear-gradient(90deg, rgba(236, 236, 236, 0.4),
+    rgba(255, 255, 255, 0.52), rgba(236, 236, 236, 0.4));
+    animation: loading 0.8s infinite;
+}
+
+@keyframes loading {
+    100% {
+        transform: translateX(100%);
+    }
+}
+

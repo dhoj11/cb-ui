@@ -1,22 +1,27 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import style from "./Notice.module.css"
 import {observer} from "mobx-react";
-import store from "../../store/Store";
-import List from "./List";
-
+import NoticeArticle from "./NoticeArticle";
+import NoticeList from "./NoticeList";
 
 const Notice = observer((props) => {
 
-    const {
-        setSnackBarOpen,
-        setSnackBarMsg
-    } = store
+    const [selectArticle, setSelectArticle] = useState(false);
 
+    const fnChangeSelectArticle = (noticeNo) => {
+        setSelectArticle(noticeNo)
+    }
 
     return (
-        <div className={style.notice}>
-            <List/>
-        </div>
+        selectArticle
+            ? <NoticeArticle
+                selectArticle={selectArticle}
+                fnChangeSelectArticle={fnChangeSelectArticle}
+                />
+            : <NoticeList
+                fnChangeSelectArticle={fnChangeSelectArticle}
+                />
+
     )
 });
 

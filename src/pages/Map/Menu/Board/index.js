@@ -1,7 +1,5 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import style from "./Board.module.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faPaperPlane, faExclamation, faComment} from "@fortawesome/free-solid-svg-icons";
 import {observer} from "mobx-react";
 import store from "../../store/Store";
 import {addBoard} from "../../../../apis/BoardApis";

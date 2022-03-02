@@ -1,0 +1,26 @@
+.notice{
+    margin: 1em;
+    border-radius: 10px;
+    border: 1px solid #d3d3d3;
+    bottom: 0px;
+    overflow: auto;
+}
+
+.article{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 1.0em;
+    font-weight: 600;
+
+}
+
+.date{
+    font-size: 0.6em;
+    color: #424242;
+    margin-top: 1em;
+    display: flex;
+}
