@@ -3,7 +3,7 @@ import axios from 'axios'
 const obj = {
 
     addAuthHeader : function (authToken) {
-        axios.defaults.headers.common = {'Authorization': `bearer ${authToken}`}
+        axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
     },
 
     getURL: function (API, param) {
