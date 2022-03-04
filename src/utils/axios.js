@@ -6,6 +6,10 @@ const obj = {
         axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
     },
 
+    delAuthHeader : function () {
+        delete axios.defaults.headers.common["Authorization"];
+    },
+
     getURL: function (API, param) {
         let url = API;
 
