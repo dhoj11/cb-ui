@@ -31,29 +31,46 @@ const AddPositionsDrawer = observer((props) => {
         setContent(event.target.value);
     }
 
-    const fnCheckValidation = () => {
+    // const fnCheckValidation = () => {
+    //     if(validation.checkEmpty(chulbongCount) && validation.checkEmpty(pyeongCount)){
+    //         setSnackBarMsg("철봉 혹은 평행봉 수량을 입력해주세요.");
+    //         setSnackBarOpen(true);
+    //         return
+    //     }
+    //
+    //     if(validation.checkEmpty(chulbongCount)){
+    //         setChulbongCount("0");
+    //     }
+    //
+    //     if(validation.checkEmpty(pyeongCount)){
+    //         setPyeongCount("0");
+    //     }
+    // }
+
+    const callAPIAddPosition = async () => {
+
+        //fnCheckValidation();
+
         if(validation.checkEmpty(chulbongCount) && validation.checkEmpty(pyeongCount)){
             setSnackBarMsg("철봉 혹은 평행봉 수량을 입력해주세요.");
             setSnackBarOpen(true);
             return
         }
 
+        let cCount = chulbongCount;
+        let pCount = pyeongCount;
+
         if(validation.checkEmpty(chulbongCount)){
-            setChulbongCount(0);
+            cCount = "0"
         }
 
         if(validation.checkEmpty(pyeongCount)){
-            setPyeongCount(0);
+            pCount = "0"
         }
-    }
-
-    const callAPIAddPosition = async () => {
-
-        fnCheckValidation();
 
         const params = {
-            chulbongCount : chulbongCount,
-            pyeongCount : pyeongCount,
+            chulbongCount : cCount,
+            pyeongCount : pCount,
             latitude : props.latitude,
             longitude : props.longitude,
             content : content
