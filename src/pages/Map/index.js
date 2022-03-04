@@ -6,7 +6,7 @@ import store from "./store/Store";
 import SearchLocationList from "./SearchLocationList";
 import {GetMapPositionsAll} from "../../apis/MapApis";
 import validation from "../../utils/validation";
-import {Drawer, Modal, Snackbar} from "@mui/material";
+import {Box, CircularProgress, Drawer, Modal, Snackbar} from "@mui/material";
 import PositionDialog from "./PositionDialog";
 import AddPositionsDrawer from "./AddPositionsDrawer";
 import point from "../../utils/img/point.png"
@@ -20,7 +20,7 @@ const Map = observer(() => {
 
     const {
         map,                // 카카오맵 객체
-        positions,          // 등록된 위치정보
+        positions = [],          // 등록된 위치정보
         latitude,           // 선택된 위도
         longitude,          // 선택된 경도
         snackbarOpen,       // 스낵바 활성화
@@ -218,6 +218,22 @@ const Map = observer(() => {
                 />
             </div>
             <div id='map' className={style.map}>
+                {
+                    positions.length === 0 &&
+                        <Box sx={{
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            margin: "0 auto",
+                            position: "absolute",
+                            top: "50%",
+                            zIndex: 1000
+                        }}>
+                            <CircularProgress
+                                size={50}/>
+                        </Box>
+                }
                 <div className={style.geoLocationIcon}
                      onClick={fnGetLocation}>
                     <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
