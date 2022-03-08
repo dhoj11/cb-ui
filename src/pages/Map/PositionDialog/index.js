@@ -12,7 +12,6 @@ const PositionDialog = observer ((props) => {
                 <Information
                     selectedPositionId={props.selectedPositionId}
                     />
-
                 <Comments
                     selectedPositionId={props.selectedPositionId}
                     />

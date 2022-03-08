@@ -1,3 +1,8 @@
+.box{
+    background-color: #e8e84b;
+    border-radius: 10px 10px 0 0 ;
+}
+
 .count{
     display: flex;
     flex-direction: row;
@@ -12,6 +17,7 @@
     align-items: center;
     text-align: center;
     margin: 0 0.5em;
+    height: 100%;
 }
 
 .name{
@@ -24,7 +30,7 @@
 }
 
 .number{
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 700;
     color: #212121;
 }

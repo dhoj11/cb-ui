@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react"
 import style from "./SearchInpubBox.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft} from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import {observer} from "mobx-react";
 import store from "../store/Store"
 import validation from "../../../utils/validation";
@@ -45,10 +45,10 @@ const SearchInputBox = observer((props) => {
                     ? <div className={style.closeBtn} onClick={onCloseSearchList}>
                         <span><FontAwesomeIcon className={style.icon} icon={faChevronLeft}/></span>
                       </div>
-                    : null
-                    // <div className={style.menuBtn} onClick={onClickMenu}>
-                    //     <span><FontAwesomeIcon className={style.icon} icon={faBars}/></span>
-                    //   </div>
+                    : <div className={style.menuBtn}>
+                        <span><FontAwesomeIcon className={style.icon} icon={faMagnifyingGlass} /></span>
+                    </div>
+
                 }
             </div>
             <div className={style.input}>
