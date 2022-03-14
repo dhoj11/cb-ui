@@ -20,6 +20,7 @@ const Map = observer(() => {
 
     const {
         map,                // 카카오맵 객체
+        clusterer,
         positions = [],          // 등록된 위치정보
         latitude,           // 선택된 위도
         longitude,          // 선택된 경도
@@ -27,6 +28,7 @@ const Map = observer(() => {
         snackBarMsg,        // 스낵바 메세지
 
         setMap,
+        setClusterer,
         setPositions,
         setLatitude,
         setLongitude,
@@ -69,6 +71,17 @@ const Map = observer(() => {
         drawPositions();
     },[positions]);
 
+    useEffect(()=>{
+
+        setClusterer(
+            new kakao.maps.MarkerClusterer({
+                map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+                averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+                minLevel: 4 // 클러스터 할 최소 지도 레벨
+        }));
+
+    },[map])
+
     /*
     map 객체를 생성하고 초기화 합니다.
     생성된 객체를 스토어 상태에 저장합니다.
@@ -94,9 +107,11 @@ const Map = observer(() => {
                 return {
                     content : item.content,
                     latlng : new kakao.maps.LatLng(item.latitude, item.longitude),
+                    position :  new kakao.maps.LatLng(item.latitude, item.longitude),
                     positionId : item.position_id
                 }
             })
+
             setPositions(positionList);
         }
     }
@@ -141,6 +156,8 @@ const Map = observer(() => {
         const icon = new kakao.maps.MarkerImage(addflag, new kakao.maps.Size(25, 25));
         const marker = new kakao.maps.Marker({image: icon});
 
+        let coords = [];
+
         for (let i = 0; i < positions.length; i++) {
             const imageSize = new kakao.maps.Size(25, 25);
             const markerImage = new kakao.maps.MarkerImage(point, imageSize);
@@ -151,6 +168,7 @@ const Map = observer(() => {
                 image: markerImage,
             });
 
+            coords.push(marker);
 
             kakao.maps.event.addListener(marker, 'click', function () {
                 setSelectedPosition(positions[i].positionId);
@@ -167,6 +185,10 @@ const Map = observer(() => {
                 setSelectLon(latlng.La);
                 onOpenAddDrawer();
             });
+        }
+
+        if(!validation.checkEmpty(clusterer) && coords.length > 0) {
+            clusterer.addMarkers(coords);
         }
     }
 

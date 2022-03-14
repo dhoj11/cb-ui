@@ -6,6 +6,7 @@ class Store {
     }
 
     @observable map = null;                         // 카카오맵 객체
+    @observable clusterer = null;
     @observable searchedLocation = null;
     @observable searchedLocationName = "";
     @observable latitude = 37.56690530047888;
@@ -43,6 +44,10 @@ class Store {
     @action setMap = (obj) => {
         this.map = obj;
         // this.map.setMaxLevel(10);
+    }
+
+    @action setClusterer = (obj) => {
+        this.clusterer = obj;
     }
 
     @action setSnackBarOpen = (value) => {
