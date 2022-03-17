@@ -2,8 +2,14 @@ import React, {useEffect, useState} from "react"
 import style from "./NoticeArticle.module.css"
 import {observer} from "mobx-react";
 import {getNoticeOne} from "../../../../../apis/NoticeApis.";
+import Store from "../../../store/Store";
 
 const NoticeArticle = observer((props) => {
+
+    const {
+        setSnackBarMsg,
+        setSnackBarOpen,
+    } = Store
 
     const selectArticle = props.selectArticle
 
@@ -23,6 +29,10 @@ const NoticeArticle = observer((props) => {
         if(result.resultCode === 200){
             const resultData = result.resultData;
             setNoticeArticle(resultData);
+        }
+        else if(result.resultCode === 500){
+            setSnackBarMsg("서버오류입니다. 잠시 후 다시시도해주세요.");
+            setSnackBarOpen(true);
         }
     }
 

@@ -25,6 +25,10 @@ const NoticeList = observer((props) => {
             const resultData = result.resultData;
             setNoticeList(resultData);
         }
+        else if(result.resultCode === 500){
+            setSnackBarMsg("서버오류입니다. 잠시 후 다시시도해주세요.");
+            setSnackBarOpen(true);
+        }
     }
 
     return (

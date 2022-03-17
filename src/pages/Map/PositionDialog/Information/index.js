@@ -3,8 +3,14 @@ import style from "./Information.module.css"
 import {observer} from "mobx-react";
 import validation from "../../../../utils/validation";
 import {GetMapPositionsOne} from "../../../../apis/MapApis";
+import Store from "../../store/Store";
 
 const Information = observer((props) => {
+
+    const {
+        setSnackBarOpen,
+        setSnackBarMsg
+    } = Store
 
     const selectedPositionId = props.selectedPositionId;
 
@@ -28,6 +34,10 @@ const Information = observer((props) => {
             if (result.resultCode === 200) {
                 const resultData = result.resultData;
                 setPositionInfo(resultData);
+            }
+            else if(result.resultCode === 500){
+                setSnackBarMsg("서버오류입니다. 잠시 후 다시시도해주세요.");
+                setSnackBarOpen(true);
             }
         }
     }

@@ -6,8 +6,14 @@ import {getMapPositionsBoards} from "../../../../../apis/MapApis";
 import CommentItem from "../CommentItem";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faExclamation} from "@fortawesome/free-solid-svg-icons";
+import Store from "../../../store/Store";
 
 const CommentList = observer((props) => {
+
+    const {
+        setSnackBarOpen,
+        setSnackBarMsg
+    } = Store
 
     const selectedPositionId = props.selectedPositionId
 
@@ -34,6 +40,10 @@ const CommentList = observer((props) => {
                 setComments(resultData);
                 props.fnUpdateComments(false);
                 setIsLoad(true);
+            }
+            else if(result.resultCode === 500){
+                setSnackBarMsg("서버오류입니다. 잠시 후 다시시도해주세요.");
+                setSnackBarOpen(true);
             }
         }
     }
