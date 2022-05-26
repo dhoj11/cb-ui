@@ -11,7 +11,7 @@ import PositionDialog from "./PositionDialog";
 import AddPositionsDrawer from "./AddPositionsDrawer";
 import point from "../../utils/img/point.png"
 import addflag from "../../utils/img/flag.png"
-import {faLocationArrow, faPaperPlane} from "@fortawesome/free-solid-svg-icons";
+import {faLocationCrosshairs, faPaperPlane} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Menu from "./Menu";
 
@@ -262,7 +262,7 @@ const Map = observer(() => {
                 }
                 <div className={style.geoLocationIcon}
                      onClick={fnGetLocation}>
-                    <FontAwesomeIcon className={style.icon} icon={faLocationArrow}/>
+                    <FontAwesomeIcon className={style.icon} icon={faLocationCrosshairs}/>
                 </div>
                 <div className={style.questionIcon}
                      onClick={onOpenMenuDialog}>
