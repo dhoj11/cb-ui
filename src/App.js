@@ -30,7 +30,7 @@ function App() {
     return (
         <>
             <GlobalStyles/>
-            <BrowserRouter>s
+            <BrowserRouter>
                 <RouteChangeTracker/>
                 {
                     isLoad
