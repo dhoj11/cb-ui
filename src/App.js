@@ -6,13 +6,13 @@ import {useEffect, useState} from "react";
 import axios from "./utils/axios";
 import {getAccessToken} from "./apis/AuthenticationApis";
 import {Box, CircularProgress} from "@mui/material";
-import RouteChangeTracker from "./utils/RouterChangeTracker"
+//import RouteChangeTracker from "./utils/RouterChangeTracker"
 
 function App() {
 
     const [isLoad, setIsLoad] = useState(false);
 
-    RouteChangeTracker();
+    //RouteChangeTracker();
 
     useEffect(()=>{
         fnSetAuthenticationHeader();
