@@ -3,21 +3,15 @@ import { useLocation } from "react-router-dom";
 import ReactGA from "react-ga";
 
 const RouteChangeTracker = () => {
-    //const location = useLocation();
-    const [initialized, setInitialized] = useState(false);
 
+    const pathName = window.location.pathname;
     useEffect(() => {
-       if (!window.location.href.includes("localhost")) {
-            ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID);
-        }
-        setInitialized(true);
-    }, []);
+        ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID);
+        ReactGA.set({page: pathName});
+        ReactGA.pageview(pathName);
+    }, [pathName]);
 
-    // useEffect(() => {
-    //     if (initialized) {
-    //         ReactGA.pageview(location.pathname + location.search);
-    //     }
-    // }, [initialized, location]);
+    return <></>;
 }
 
 export default RouteChangeTracker;

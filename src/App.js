@@ -10,8 +10,6 @@ import RouteChangeTracker from "./utils/RouterChangeTracker"
 
 function App() {
 
-    RouteChangeTracker();
-
     const [isLoad, setIsLoad] = useState(false);
 
     useEffect(()=>{
@@ -32,7 +30,8 @@ function App() {
     return (
         <>
             <GlobalStyles/>
-            <BrowserRouter>
+            <BrowserRouter>s
+                <RouteChangeTracker/>
                 {
                     isLoad
                         ? <SinglePage>
