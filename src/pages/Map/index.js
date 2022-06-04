@@ -9,8 +9,9 @@ import validation from "../../utils/validation";
 import {Box, CircularProgress, Drawer, Modal, Snackbar} from "@mui/material";
 import PositionDialog from "./PositionDialog";
 import AddPositionsDrawer from "./AddPositionsDrawer";
-import point from "../../utils/img/point.png"
-import addflag from "../../utils/img/flag.png"
+import point from "../../utils/img/point.png";
+import addflag from "../../utils/img/flag.png";
+import circle from "../../utils/img/circle.png";
 import {faLocationCrosshairs, faPaperPlane} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Menu from "./Menu";
@@ -132,6 +133,22 @@ const Map = observer(() => {
     }
 
     /*
+    Geolocation의 반환 좌표를 지도에 표시합니다.
+     */
+    const fnDisplayCurrentPosition = (lat, lon) => {
+        const markerPosition  = new kakao.maps.LatLng(lat, lon);
+
+        const imageSize = new kakao.maps.Size(21, 20);
+        const markerImage = new kakao.maps.MarkerImage(circle, imageSize);
+
+        const marker = new kakao.maps.Marker({
+            position: markerPosition,
+            image: markerImage
+        });
+        marker.setMap(map);
+    }
+
+    /*
     현재위치정보 가져오기
     Geolocation
      */
@@ -141,10 +158,15 @@ const Map = observer(() => {
                 let lat = position.coords.latitude;
                 let lon = position.coords.longitude;
 
+                fnDisplayCurrentPosition(lat, lon);
+
                 setLatitude(lat);
                 setLongitude(lon);
 
                 fnMovePositions();
+
+
+
             });
         } else{
             setSnackBarMsg("현재 위치정보를 가져올 수 없습니다.");
@@ -246,19 +268,19 @@ const Map = observer(() => {
             <div id='map' className={style.map}>
                 {
                     positions.length === 0 &&
-                        <Box sx={{
-                            width: "100%",
-                            height: "100%",
-                            display: "flex",
-                            justifyContent: "center",
-                            margin: "0 auto",
-                            position: "absolute",
-                            top: "50%",
-                            zIndex: 1000
-                        }}>
-                            <CircularProgress
-                                size={50}/>
-                        </Box>
+                    <Box sx={{
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        margin: "0 auto",
+                        position: "absolute",
+                        top: "50%",
+                        zIndex: 1000
+                    }}>
+                        <CircularProgress
+                            size={50}/>
+                    </Box>
                 }
                 <div className={style.geoLocationIcon}
                      onClick={fnGetLocation}>
@@ -266,37 +288,37 @@ const Map = observer(() => {
                 </div>
                 <div className={style.questionIcon}
                      onClick={onOpenMenuDialog}>
-                        <FontAwesomeIcon className={style.icon} icon={faPaperPlane}/>
+                    <FontAwesomeIcon className={style.icon} icon={faPaperPlane}/>
                 </div>
             </div>
 
             {/*위치추가 드로어블*/}
             <Drawer
-                    PaperProps={{sx: {
-                                    maxWidth: "400px",
-                                    width: "100%",
-                                    borderTopLeftRadius: 20,
-                                    borderTopRightRadius: 20,
-                                    margin: "auto"},
-                                }}
+                PaperProps={{sx: {
+                        maxWidth: "400px",
+                        width: "100%",
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                        margin: "auto"},
+                }}
 
-                    style={{
-                            borderRadius: "20px",
-                            position: 'absolute',
-                            maxWidth: "400px",
-                            width: "100%",
-                            }}
-                    anchor='bottom'
-                    variant="temporary"
-                    open={addDrawerOpen}
-                    >
-                    <AddPositionsDrawer
-                        latitude={selectLat}
-                        longitude={selectLon}
-                        callAPIgetMapPositionsAll={callAPIgetMapPositionsAll}
-                        drawPositions={drawPositions}
-                        onCloseAddDrawer={onCloseAddDrawer}
-                    />
+                style={{
+                    borderRadius: "20px",
+                    position: 'absolute',
+                    maxWidth: "400px",
+                    width: "100%",
+                }}
+                anchor='bottom'
+                variant="temporary"
+                open={addDrawerOpen}
+            >
+                <AddPositionsDrawer
+                    latitude={selectLat}
+                    longitude={selectLon}
+                    callAPIgetMapPositionsAll={callAPIgetMapPositionsAll}
+                    drawPositions={drawPositions}
+                    onCloseAddDrawer={onCloseAddDrawer}
+                />
             </Drawer>
 
             {/*위치검색 다이얼로그*/}
@@ -320,10 +342,10 @@ const Map = observer(() => {
                 onClose={onClosePositionDialog}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
-                >
-                    <PositionDialog
-                        selectedPositionId = {selectedPosition}
-                    />
+            >
+                <PositionDialog
+                    selectedPositionId = {selectedPosition}
+                />
 
             </Modal>
 
@@ -333,7 +355,7 @@ const Map = observer(() => {
                 onClose={onCloseMenuDialog}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
-                >
+            >
                 <Menu/>
             </Modal>
 
@@ -343,7 +365,7 @@ const Map = observer(() => {
                 onClose={onCloseSnackBar}
                 message={snackBarMsg}
                 autoHideDuration={3000}
-                />
+            />
         </div>
     )
 });
